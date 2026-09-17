@@ -6,5 +6,11 @@ def sample_var_std(x: list) -> dict:
     """
     vec_x = np.array(x)
     n = len(x)
-    return {"variance" : float(np.var(vec_x , ddof=1)) , "standard_deviation" : float(np.std(vec_x , ddof = 1))}
-    pass
+    mean = np.mean(vec_x)
+    sum_diff = sum((i - mean)**2 for i in x)
+    var = sum_diff / (n-1)
+    std = np.sqrt(var)
+    return {
+        "variance": float(var), 
+        "standard_deviation": float(std)
+    }
