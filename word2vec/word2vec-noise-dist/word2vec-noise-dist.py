@@ -5,6 +5,5 @@ def noise_distribution(counts: torch.Tensor,
     """
     Returns the float64 negative-sampling distribution over the vocabulary.
     """
-    counts = counts**alpha
+    counts = counts.to(torch.float64) ** alpha
     return counts / torch.sum(counts)
-    pass
